@@ -25,7 +25,7 @@ public class Music {
         allMusics.add(this);
     }
 
-    public static void play() {
+    public void play() {
         numberOfStream++;
         System.out.println("Now playing: \"" + getTitle() + "\" by " + getSinger());
     }
