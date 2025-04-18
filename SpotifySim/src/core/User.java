@@ -48,7 +48,7 @@ public class User {
         this.username = newUsername;
     }
 
-    public String getPassword() { return username; }
+    public String getPassword() { return password; }
     public void setPassword(String newPassword) {
         if (newPassword == null || newPassword.isEmpty())
             throw new InvalidOperatorException("Invalid input. password cannot be null or empty.");

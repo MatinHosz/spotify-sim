@@ -2,6 +2,7 @@ package core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Playlist {
     public ArrayList<Music> playlist;
@@ -15,6 +16,10 @@ public class Playlist {
     }
 
     public void editTitle(String password, String newTitle) {
+        if (Objects.equals(owner.getPassword(), password)) {
+            throw new InvalidOperatorException("Invalid input. password is incorrect.");
+        }
+        
         if (newTitle == null || newTitle.isEmpty())
             throw new InvalidOperatorException("Invalid Input. title can not be null or empty.");
         if (password == null || password.isEmpty())
@@ -23,6 +28,10 @@ public class Playlist {
         title = newTitle;
     }
     public void addMusic(String password, Music music) {
+        if (Objects.equals(owner.getPassword(), password)) {
+            throw new InvalidOperatorException("Invalid input. password is incorrect.");
+        }
+
         try {
             Music.repetitiveMusic(music.getTitle(), music.getSinger(), playlist);
         } catch (InvalidOperatorException e) {
@@ -32,6 +41,10 @@ public class Playlist {
         playlist.add(music);
     }
     public void removeMusic(String password, Music music) {
+        if (Objects.equals(owner.getPassword(), password)) {
+            throw new InvalidOperatorException("Invalid input. password is incorrect.");
+        }
+
         String musicName = music.getTitle();
         String musicSingerName = music.getSinger().getUsername();
 
