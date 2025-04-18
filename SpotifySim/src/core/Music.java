@@ -25,12 +25,12 @@ public class Music {
         allMusics.add(this);
     }
 
-    public void play() {
+    public static void play() {
         numberOfStream++;
         System.out.println("Now playing: \"" + getTitle() + "\" by " + getSinger());
     }
 
-    public List<Music> search(String musicName, ArrayList<Music> musicList) {
+    public static List<Music> search(String musicName, ArrayList<Music> musicList) {
         List<Music> searchedMusicList = new ArrayList<>();
 
         for (Music music : musicList) {
@@ -42,7 +42,7 @@ public class Music {
         return searchedMusicList;
     }
 
-    public Music search(String musicName, String singerName, ArrayList<Music> musicList) {
+    public static Music search(String musicName, String singerName, ArrayList<Music> musicList) {
         for (Music music : musicList) {
             if (Objects.equals(music.title, musicName) && Objects.equals(music.singer.getUsername(), singerName))
                 return music;
@@ -65,7 +65,7 @@ public class Music {
 
     public int getNumberOfStream() { return numberOfStream; }
 
-    public void repetitiveMusic(String title, User singer, ArrayList<Music> musicList) {
+    public static void repetitiveMusic(String title, User singer, ArrayList<Music> musicList) {
         for (Music music : musicList) {
             if (Objects.equals(music.title, title) && Objects.equals(music.singer, singer))
                 throw new InvalidOperatorException("This music already exists with the same title and singer.");

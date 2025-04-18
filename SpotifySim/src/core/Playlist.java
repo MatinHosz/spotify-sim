@@ -23,7 +23,7 @@ public class Playlist {
         title = newTitle;
     }
     public void addMusic(String password) {
-        // TODO Complete after optimizing repetitive method at Music class
+        M
     }
     public void removeMusic(String password, Music music) {
         String musicName = music.getTitle();
