@@ -41,7 +41,7 @@ public class User {
             throw new InvalidOperatorException("Invalid input. username cannot be null or empty.");
 
         for (User user: allUsers) {
-            if (Objects.equals(this.getUsername(), newUsername))
+            if (Objects.equals(user.getUsername(), newUsername))
                 throw new InvalidOperatorException("User with this username already exist.");
         }
 
