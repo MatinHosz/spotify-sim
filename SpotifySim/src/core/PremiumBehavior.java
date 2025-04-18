@@ -3,6 +3,10 @@ package core;
 public class PremiumBehavior implements UserBehavior {
     private int month;
 
+    public PremiumBehavior(int month) {
+        this.setMonth(month);
+    }
+
     @Override
     public void createPlaylist(String title, User owner) {
         if (title == null || title.isEmpty())

@@ -12,12 +12,16 @@ public class RegularBehavior implements UserBehavior {
     public void playMusic(Music music) {
         if (this.getPlayingLimit() <= 0)
             throw new InvalidOperatorException("You have reached your play limit.");
-        // TODO complete method after completing Music class
+        this.setPlayingLimit(this.getPlayingLimit() - 1);
+        music.play();
     }
 
     @Override
     public void buyPremium(User owner, int month) {
-        // TODO complete method after completing User class
+        if (month < 1)
+            throw new InvalidOperatorException("Invalid input. month cannot be less then 1");
+
+        owner.setBehavior(new PremiumBehavior(month));
     }
 
     public int getPlayingLimit() { return playingLimit; }
