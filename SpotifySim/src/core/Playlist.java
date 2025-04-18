@@ -22,8 +22,14 @@ public class Playlist {
 
         title = newTitle;
     }
-    public void addMusic(String password) {
-        M
+    public void addMusic(String password, Music music) {
+        try {
+            Music.repetitiveMusic(music.getTitle(), music.getSinger(), playlist);
+        } catch (InvalidOperatorException e) {
+            throw new InvalidOperatorException(e.getMessage());
+        }
+
+        playlist.add(music);
     }
     public void removeMusic(String password, Music music) {
         String musicName = music.getTitle();
@@ -38,10 +44,11 @@ public class Playlist {
     }
 
     public List<Music> searchInPlaylist(String musicName) {
-        if (musicName == null || musicName.isEmpty())
+        if (musicName == null || musicName.isEmpty()) {
             throw new InvalidOperatorException("Invalid input. musicName cannot be null or empty.");
+        }
 
-        // TODO Complete after optimizing search method of Music class for using in this class
+        return Music.search(musicName, playlist);
     }
     public Music searchInPlaylist(String musicName, String singerName) {
         if (musicName == null || musicName.isEmpty())
@@ -49,10 +56,12 @@ public class Playlist {
         if (singerName == null || singerName.isEmpty())
             throw new InvalidOperatorException("Invalid input. singerName cannot be null or empty.");
 
-        // TODO Complete after optimizing search method of Music class for using in this class
+        return Music.search(musicName, singerName, playlist);
     }
 
     public void playPlaylist() {
-        // TODO Complete after optimizing play method of Music class for using in this class
+        for (Music music: playlist) {
+            music.play();
+        }
     }
 }
