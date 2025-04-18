@@ -4,13 +4,17 @@ public class PremiumBehavior implements UserBehavior {
     private int month;
 
     @Override
-    public void createPlaylist(String Title, User Owner) {
-        // TODO complete method after completing User and Playlist class
+    public void createPlaylist(String title, User owner) {
+        if (title == null || title.isEmpty())
+            throw new InvalidOperatorException("Invalid input. title cannot be null or empty.");
+
+        Playlist newPlaylist = new Playlist(owner, title);
+        owner.playlists.add(newPlaylist);
     }
 
     @Override
     public void playMusic(Music music) {
-        // TODO complete method after completing Music class
+        music.play();
     }
 
     @Override
