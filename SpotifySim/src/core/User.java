@@ -6,7 +6,7 @@ import java.util.Objects;
 public class User {
     private String username;
     private String password;
-    UserBehavior behavior;
+    private UserBehavior behavior;
 
     public ArrayList<User> followerList = new ArrayList<>();
     public ArrayList<User> followingList = new ArrayList<>();
@@ -56,5 +56,9 @@ public class User {
             throw new InvalidOperatorException("password length should not be less then 8.");
 
         this.password = newPassword;
+    }
+    public UserBehavior getBehavior() { return behavior; }
+    public void setBehavior(UserBehavior behavior) {
+        this.behavior = behavior;
     }
 }
